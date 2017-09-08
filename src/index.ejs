@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>easy-qr-code</title>
+    <style>
+      ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #d8dbe0;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+        color: #d8dbe0;
+      }
+      :-ms-input-placeholder { /* IE 10+ */
+        color: #d8dbe0;
+      }
+      :-moz-placeholder { /* Firefox 18- */
+        color: #d8dbe0;
+      }
+
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        color: #5e7478;
+        background-color: #ffffff;
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      }
+
+      ul, ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <% if (htmlWebpackPlugin.options.nodeModules) { %>
+      <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+      <script>
+        require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+      </script>
+    <% } %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Set `__static` path to static files in production -->
+    <script>
+      if (process.env.NODE_ENV !== 'development') window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+    </script>
+
+    <!-- webpack builds are automatically injected -->
+  </body>
+</html>
