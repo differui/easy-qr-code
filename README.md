@@ -1,4 +1,4 @@
-![Easy-QR-Code](https://user-images.githubusercontent.com/3120588/30239299-1dafa578-958c-11e7-830b-b049ac50d7bc.png "Easy QR Code")
+![Easy-QR-Code](https://user-images.githubusercontent.com/3120588/30247348-1226c4c0-9645-11e7-98ee-8031fec10909.png "Easy QR Code")
 
 # Easy QR Code
 
