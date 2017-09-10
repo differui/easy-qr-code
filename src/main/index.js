@@ -1,6 +1,7 @@
-import { app, BrowserWindow, ipcMain } from 'electron' // eslint-disable-line
+import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron' // eslint-disable-line
 import { image } from 'qr-image';
 import { join as joinPath } from 'path';
+import defaultMenu from 'electron-default-menu';
 
 /**
  * Set `__static` path to static files in production
@@ -30,8 +31,15 @@ function createWindow() {
   });
 }
 
+function createMenu() {
+  const menu = defaultMenu(app, shell);
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
+}
+
 app.on('ready', () => {
   createWindow();
+  createMenu();
 });
 
 app.on('window-all-closed', () => {
