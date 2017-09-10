@@ -21,7 +21,6 @@ function createWindow() {
     height: 563,
     useContentSize: true,
     resizable: process.env.NODE_ENV === 'development',
-    frame: false, // process.env.NODE_ENV === 'development',
     backgroundColor: '#e0e5e6',
   });
   mainWindow.loadURL(winURL);
