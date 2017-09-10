@@ -12,8 +12,8 @@
     <a href="http://standardjs.com/">
         <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="JavaScript Style Guide" />
     </ahttp->
-    <a href="https://npmjs.org/package/easy-qr-code">
-        <img src="https://img.shields.io/npm/v/easy-qr-code.svg?style=flat-squar" alt="NPM" />
+    <a href="https://github.com/differui/easy-qr-code/releases/latest">
+        <img src="http://github-release-version.herokuapp.com/github/differui/easy-qr-code/release.svg?style=flat" alt="Latest Release">
     </a>
 </p>
 
