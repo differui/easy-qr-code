@@ -19,7 +19,7 @@
 
 ## License
 
-MIT &copy; [BinRui Guan](mailto: differui@gmail.com)
+MIT &copy; [BinRui Guan](mailto:differui@gmail.com)
 
 
 
