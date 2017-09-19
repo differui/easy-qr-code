@@ -23,7 +23,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { parse as parseUrl } from 'url';
+import { isWebUri } from 'valid-url';
 import Toast from '@/components/Toast';
 import Scroller from '@/components/Scroller';
 import QrCodeImage from '@/components/QrCodeImage';
@@ -59,9 +59,6 @@ export default {
         this.$electron.ipcRenderer.send('encode-text', newSelectedCode.content);
       }
     },
-    allCodes(newAllCodes) {
-      helpers.setItem('codes', newAllCodes);
-    },
   },
   methods: {
     handleInputKeyDown(ev) {
@@ -86,15 +83,30 @@ export default {
         return;
       }
       if (content) {
-        const urlOpts = parseUrl(content);
+        let previousCodeId;
 
+        if (isWebUri(content)) {
+          helpers.getTitle(content)
+            .then((urlTitle) => {
+              if (urlTitle) {
+                this.$store.dispatch('updateCode', {
+                  id: previousCodeId,
+                  title: urlTitle,
+                });
+              }
+            })
+            .catch(() => {
+              // do nothing
+            });
+        }
         this.$store.dispatch('addCode', {
-          title: urlOpts.hostname || content,
+          title: content,
           content,
           selected: true,
         });
         this.$electron.ipcRenderer.send('encode-text', content);
         this.$store.dispatch('selectCode', this.allCodes[0].id);
+        previousCodeId = this.selectedCode.id;
       }
       targetNode.value = '';
     },
