@@ -1,6 +1,7 @@
 <template>
   <modal class="helper-modal" :visible="value">
     <div class="helper-modal__content">
+      <div class="helper-modal__close" @click="handleCloseClick"></div>
       <ul class="helper-modal__list" v-if="shortcutOptionActivated">
         <li class="helper-modal__item">
           <kbd class="helper-modal__kbd">{{ keyModifier }}</kbd>
@@ -99,6 +100,39 @@ export default {
       justify-content: center;
       background-color: #ffffff;
       box-sizing: border-box;
+    }
+
+    &__close {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      top: 35px;
+      right: 45px;
+      position: absolute;
+    }
+
+    &__close::before,
+    &__close::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 70%;
+      background-color: #fff;
+      top: 1px;
+      position: relative;
+    }
+
+    &__close::before {
+      transform: rotate(45deg);
+    }
+
+    &__close::after {
+      transform: rotate(-45deg);
     }
 
     &__about,
