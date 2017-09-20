@@ -38,7 +38,7 @@ export default {
   &__wrapper {
     text-align: center;
     border-radius: 500px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.75);
     min-width: 100px;
     max-width: 250px;
     padding: 12px;

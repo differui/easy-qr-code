@@ -1,6 +1,7 @@
 <template>
   <modal class="helper-modal" :visible="value">
     <div class="helper-modal__content">
+      <div class="helper-modal__close" @click="handleCloseClick"></div>
       <ul class="helper-modal__list" v-if="shortcutOptionActivated">
         <li class="helper-modal__item">
           <kbd class="helper-modal__kbd">{{ keyModifier }}</kbd>
@@ -81,18 +82,57 @@ export default {
 
 <style lang="scss">
   .helper-modal {
+    .modla__wrapper,
+    .modal__content,
+    &__content {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      position: fixed;
+    }
+
     &__content {
       display: flex;
       flex-direction: row;
       align-items: center;
-      position: relative;
-      border-radius: 8px;
-      width: 300px;
-      min-height: 240px;
-      max-height: 400px;
+      justify-content: center;
       background-color: #ffffff;
-      padding: 50px 32px 50px;
       box-sizing: border-box;
+    }
+
+    &__close {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      top: 35px;
+      right: 45px;
+      position: absolute;
+    }
+
+    &__close::before,
+    &__close::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 70%;
+      background-color: #fff;
+      top: 1px;
+      position: relative;
+    }
+
+    &__close::before {
+      transform: rotate(45deg);
+    }
+
+    &__close::after {
+      transform: rotate(-45deg);
     }
 
     &__about,
@@ -106,7 +146,6 @@ export default {
     }
 
     &__tab {
-      border-top: solid 1px #e0e5e6;
       flex-direction: row;
       list-style: none;
       display: flex;
@@ -119,7 +158,7 @@ export default {
     &__option {
       cursor: pointer;
       color: #e8e8e8;
-      font-size: 12px;
+      font-size: 24px;
       padding: 2px 0;
       text-align: center;
       flex: 1;
